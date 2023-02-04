@@ -1,0 +1,37 @@
+1.write a sql query to find in which sport or event india has won the highest medals?
+   
+    SELECT event,COUNT(medal)
+    FROM oly_event
+    WHERE team='India'
+    AND medal <> 'NA'
+    GROUP BY event
+    ORDER BY COUNT(medal) DESC
+    
+ 2.How many events are held in olympics?
+
+    SELECT DISTINCT COUNT(event)
+    FROM oly_event
+
+3.Ientify the sport or event which was played most consecutively in the summer Olympics games?
+    SELECT event, COUNT( event)
+    FROM oly_event
+    WHERE season='Summer'
+    GROUP BY event
+    ORDER BY COUNT(event) DESC
+    
+ 4.write the sql query to fetch the details of the all countries which have won most number of silver and bronze medals and at least one gold medal?
+     SELECT team,SUM(Silver),
+                 SUM(Bronze),
+                 SUM(Gold)
+    FROM (SELECT *,
+    CASE medal WHEN 'Silver' THEN 1 ELSE 0 END AS Silver,
+    CASE medal WHEN 'Bronze' THEN 1 ELSE 0 END AS Bronze,
+    CASE medal WHEN 'Gold' THEN 1 ELSE 0 END AS Gold,
+    FROM oly_event
+    )innerT
+    GROUP BY team
+    HAVING MAX(Gold)>0
+    ORDER BY COUNT(silver) DESC
+
+
+
