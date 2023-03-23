@@ -18,6 +18,7 @@ For this blog, I am going to showcase some beginner MySQL skills with a data set
     FROM oly_event;
 
 3.Ientify the sport or event which was played most consecutively in the summer Olympics games?
+    
     SELECT event, COUNT( event)
     FROM oly_event
     WHERE season='Summer'
@@ -25,6 +26,7 @@ For this blog, I am going to showcase some beginner MySQL skills with a data set
     ORDER BY COUNT(event) DESC;
 
  4.write the sql query to fetch the details of the all countries which have won most number of silver and bronze medals and at least one gold medal?
+     
      SELECT team,SUM(Silver),
                  SUM(Bronze),
                  SUM(Gold)
@@ -39,7 +41,7 @@ For this blog, I am going to showcase some beginner MySQL skills with a data set
     ORDER BY COUNT(silver) DESC;
 
 5.Which Countries have won most medals?
-
+   
    SELECT noc,COUNT(medal)
    FROM oly_event
    WHERE medal<> 'NA'
