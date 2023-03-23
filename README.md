@@ -42,71 +42,71 @@ For this blog, I am going to showcase some beginner MySQL skills with a data set
 
 5.Which Countries have won most medals?
    
-   SELECT noc,COUNT(medal)
-   FROM oly_event
-   WHERE medal<> 'NA'
-   GROUP BY noc
-   ORDER BY COUNT(medal) desc;
+    SELECT noc,COUNT(medal)
+    FROM oly_event
+    WHERE medal<> 'NA'
+    GROUP BY noc
+    ORDER BY COUNT(medal) desc;
 
 6.Which cities have hosted most Olympics. Find top 5 cities?
 
-   SELECT city,COUNT(DISTINCT year ) AS dy
-   FROM oly_event
-   GROUP BY city
-   ORDER BY dy DESC
-   LIMIT 5;
+    SELECT city,COUNT(DISTINCT year ) AS dy
+    FROM oly_event
+    GROUP BY city
+    ORDER BY dy DESC
+    LIMIT 5;
 
 7.Which cities have hosted most Olympics. Find top 5 cities?
 
-   SELECT sport ,COUNT(sex) AS cs
-   FROM oly_event
-   WHERE sex='F'
-   GROUP BY sport 
-   ORDER BY  cs desc
-   LIMIT 5;
+    SELECT sport ,COUNT(sex) AS cs
+    FROM oly_event
+    WHERE sex='F'
+    GROUP BY sport 
+    ORDER BY  cs desc
+    LIMIT 5;
 
 8.Which player has won max number of gold medals?
 
-   SELECT fname,SUM(gold)
-   FROM
+    SELECT fname,SUM(gold)
+    FROM
     (SELECT *,
      CASE medal WHEN 'Gold' THEN 1 ELSE 0 END AS Gold
 
      FROM oly_event
-   )xyz
+    )xyz
      GROUP BY fname 
      HAVING MAX(Gold)>0
      ORDER BY SUM(gold) DESC;
 
 
 9.which sport has maximum events ?
-
-   SELECT sport, COUNT(DISTINCT event)
-   FROM oly_event
-   GROUP BY sport
-   ORDER BY COUNT(sport) desc;
+ 
+    SELECT sport, COUNT(DISTINCT event)
+    FROM oly_event
+    GROUP BY sport
+    ORDER BY COUNT(sport) desc;
 
 
 10.Which countries won maximum medal in one year and in which year?
 
-   SELECT noc, year, COUNT(medal) AS total_medals
-   FROM Oly_event
-   WHERE medal <> 'NA'
-   GROUP BY noc, year
-   ORDER BY total_medals DESC
-   LIMIT 1;
+    SELECT noc, year, COUNT(medal) AS total_medals
+    FROM Oly_event
+    WHERE medal <> 'NA'
+    GROUP BY noc, year
+    ORDER BY total_medals DESC
+    LIMIT 1;
 
 12.To find the sports conducted how many times in the given year of 2000 and 2016
 
-   SELECT sport, COUNT(*)sport
-   FROM oly_event
-   WHERE year BETWEEN 2000 AND 2016
-   GROUP BY sport
-   ORDER BY COUNT(sport) DESC;
+    SELECT sport, COUNT(*)sport
+    FROM oly_event
+    WHERE year BETWEEN 2000 AND 2016
+    GROUP BY sport
+    ORDER BY COUNT(sport) DESC;
 
 13.To find the sports conducted how many times in this year
 
-   SELECT sport, COUNT(*)sport
-   FROM oly_event
-   GROUP BY sport
-   ORDER BY COUNT(sport) DESC;
+    SELECT sport, COUNT(*)sport
+    FROM oly_event
+    GROUP BY sport
+    ORDER BY COUNT(sport) DESC;
